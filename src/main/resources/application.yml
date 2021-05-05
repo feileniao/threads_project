@@ -1,0 +1,12 @@
+server:
+   port: 8089
+
+# thread pool
+thread:
+   pool:
+      core-size: 20
+      max-size: 30
+      # 秒
+      keep-alive-time: 20
+      block-queue:
+         capacity: 1000
