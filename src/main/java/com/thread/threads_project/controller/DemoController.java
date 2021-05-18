@@ -2,6 +2,7 @@ package com.thread.threads_project.controller;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -20,6 +21,10 @@ public class DemoController {
     @Qualifier("threadPool")
     @Resource
     private ThreadPoolExecutor threadPoolExecutor;
+    @RequestMapping("/aop")
+    public String aop(@RequestParam String a) {
+        return a;
+    }
 
     @RequestMapping("/test")
     public void get() {
