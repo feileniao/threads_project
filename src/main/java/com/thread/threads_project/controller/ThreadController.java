@@ -13,10 +13,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * @date 2021/5/4
  * @description 多线程实例
+ * feileniao
  */
 @RestController
 @RequestMapping("thread")
-public class DemoController {
+public class ThreadController {
 
     @Qualifier("threadPool")
     @Resource
@@ -46,24 +47,21 @@ public class DemoController {
             int startIndex = i * count;
             int endIndex = (i + 1) * count;
             newList = list.subList(startIndex, endIndex);
-//            newList.stream().forEach(System.out::println);
             List<Integer> finalNewList = newList;
-//            finalNewList.stream().forEach(System.out::println);
             threadPoolExecutor.submit(() -> {
-//                System.out.println(Thread.currentThread().getId() + "-" + Thread.currentThread().getName() + "---任务");
+                System.out.println(Thread.currentThread().getId() + "-" + Thread.currentThread().getName() + "---任务");
                 for (int a = 0; a < finalNewList.size(); a++) {
                     try {
                         Thread.sleep(300);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-//                    System.out.println(Thread.currentThread().getId() + "-" + Thread.currentThread().getName() + "---" + finalNewList.get(a));
+                    System.out.println(Thread.currentThread().getId() + "-" + Thread.currentThread().getName() + "---" + finalNewList.get(a));
                 }
             });
         }
         Long end = System.currentTimeMillis();
         System.out.println((end-start)/1000);
-        System.out.println("--------------------------");
 
         Long start2 = System.currentTimeMillis();
         for (int i = 0; i < list.size(); i++) {
@@ -72,7 +70,6 @@ public class DemoController {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-//                    System.out.println(Thread.currentThread().getId() + "-" + Thread.currentThread().getName() + "---" + list.get(i));
         }
         Long end2 = System.currentTimeMillis();
         System.out.println(end2);

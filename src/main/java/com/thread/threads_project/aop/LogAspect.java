@@ -12,7 +12,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Describe：日志切面处理 desc<br>
+ * 日志切面处理<br>
  */
 @Aspect
 @Component
@@ -33,8 +33,8 @@ public class LogAspect {
             log.info("\n"
                     + "Begin:" + "\n"
                     + "Url:" + requestPath + "\n"
-                    + "RequestParams:" + JSONObject.toJSON(args) + "\n"
-                    + "ResponseResults:" + JSONObject.toJSON(result) + "\n"
+                    + "RequestParams:" + JSONObject.toJSONString(args) + "\n"
+                    + "ResponseResults:" + JSONObject.toJSONString(result) + "\n"
                     + "Cost:" + (endTimeMillis - startTimeMillis) + " ms " + "\n"
                     + "End" + "\n");
         }catch (Exception e){
